@@ -1,9 +1,18 @@
-import { StyleSheet, View, Text } from "react-native";
+import { useUserStore } from "@/lib";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Button } from "@/components/Button";
 
 export default function ProfileScreen() {
+  const toggleOnboarding = useUserStore((state) => state.toggleOnboarding);
+
+  const handleToggle = () => {
+    console.log("Toggle onboarding");
+    toggleOnboarding();
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.lead}>This is the profile screen</Text>
+      <Button onPress={handleToggle}>Back to onboarding</Button>
     </View>
   );
 }
@@ -13,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 24,
   },
   lead: {
     fontSize: 24,
