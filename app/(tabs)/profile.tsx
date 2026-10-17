@@ -1,6 +1,6 @@
 import { useUserStore } from "@/lib";
 import { StyleSheet, View, Text } from "react-native";
-import { Button } from "@/components/Button";
+import { PlantlyButton } from "@/components/Button";
 
 export default function ProfileScreen() {
   const toggleOnboarding = useUserStore((state) => state.toggleOnboarding);
@@ -12,7 +12,7 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.lead}>This is the profile screen</Text>
-      <Button onPress={handleToggle}>Back to onboarding</Button>
+      <PlantlyButton onPress={handleToggle}>Back to onboarding</PlantlyButton>
     </View>
   );
 }

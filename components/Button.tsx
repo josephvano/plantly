@@ -1,17 +1,35 @@
 import { theme } from "@/theme";
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Pressable,
+  Platform,
+} from "react-native";
+import * as Haptics from "expo-haptics";
 
 type Props = {
   onPress: () => void;
   children: React.ReactNode;
 };
 
-export const Button = ({ onPress, children }: Props) => {
+export const PlantlyButton = ({ onPress, children }: Props) => {
+  const handlePressed = async () => {
+    if (Platform.OS !== "web") {
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+
+    onPress();
+  };
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <Pressable
+      style={({ pressed }) => [styles.button, pressed && styles.pressed]}
+      onPress={handlePressed}
+    >
       <Text style={styles.text}>{children}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -21,6 +39,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 8,
     backgroundColor: theme.color.primary,
+  },
+  pressed: {
+    backgroundColor: theme.color.secondary,
   },
   text: {
     fontWeight: "400",
