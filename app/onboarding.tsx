@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { useUserStore } from "@/lib";
 import { useRouter } from "expo-router";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { theme } from "@/theme";
 
 export default function OnboardingScreen() {

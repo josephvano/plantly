@@ -1,5 +1,5 @@
 import { useUserStore } from "@/lib";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Button } from "@/components/Button";
 
 export default function ProfileScreen() {
