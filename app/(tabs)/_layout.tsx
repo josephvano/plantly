@@ -1,7 +1,8 @@
 import { Entypo, Feather } from "@expo/vector-icons";
-import { Redirect, Tabs } from "expo-router";
+import { Link, Redirect, Tabs } from "expo-router";
 import { theme } from "@/theme";
 import { useUserStore } from "@/lib";
+import { Pressable } from "react-native";
 
 export default function Layout() {
   const hasFinishedOnboarding = useUserStore(
@@ -26,6 +27,18 @@ export default function Layout() {
             <Entypo name="leaf" size={size} color={color} />
           ),
           title: "Plantly",
+          headerRight: () => (
+            <Link href={"/new"} asChild>
+              <Pressable hitSlop={16}>
+                <Feather
+                  name="plus-circle"
+                  size={36}
+                  color={theme.color.green}
+                  style={{ marginRight: 16 }}
+                />
+              </Pressable>
+            </Link>
+          ),
         }}
       />
       <Tabs.Screen
