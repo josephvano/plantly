@@ -5,5 +5,7 @@ export const theme = {
     green: "#29b365",
     primary: "#29b365",
     secondary: "#206a42",
+    greenLight: "#a0d36c",
+    greenLighter: "#d0e57e",
   },
 };
