@@ -1,14 +1,11 @@
-import { usePlantStore } from "@/lib";
-import { launchImageLibraryAsync, MediaTypeOptions } from "expo-image-picker";
+import { usePlantStore, PlantAddType } from "@/lib";
+import { launchImageLibraryAsync } from "expo-image-picker";
 import { useRouter } from "expo-router";
 import {
   Text,
   StyleSheet,
   TextInput,
   Alert,
-  ScrollView,
-  View,
-  Pressable,
   TouchableOpacity,
   Platform,
 } from "react-native";
@@ -46,7 +43,13 @@ export default function NewScreen() {
 
     console.log("Adding plant", name, days);
 
-    addPlant(name, Number(days));
+    const newPlant: PlantAddType = {
+      name,
+      wateringFrequencyDays: Number(days),
+      imageUri,
+    };
+
+    addPlant(newPlant);
 
     router.navigate("/");
   };

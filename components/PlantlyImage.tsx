@@ -26,7 +26,7 @@ export const PlantlyImage = ({ size, uri }: Props) => {
   return (
     <Image
       source={uri ? { uri } : PlantlyImageSource}
-      style={{ width: imageSize, height: imageSize, borderRadius: 20 }}
+      style={{ width: imageSize, height: imageSize, borderRadius: 12 }}
     />
   );
 };
