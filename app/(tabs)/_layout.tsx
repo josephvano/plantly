@@ -20,25 +20,14 @@ export default function Layout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Entypo name="leaf" size={size} color={color} />
           ),
           title: "Plantly",
-          headerRight: () => (
-            <Link href={"/new"} asChild>
-              <Pressable hitSlop={16}>
-                <Feather
-                  name="plus-circle"
-                  size={36}
-                  color={theme.color.green}
-                  style={{ marginRight: 16 }}
-                />
-              </Pressable>
-            </Link>
-          ),
         }}
       />
       <Tabs.Screen
