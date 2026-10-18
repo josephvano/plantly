@@ -1,4 +1,5 @@
 import { usePlantStore } from "@/lib";
+import { launchImageLibraryAsync, MediaTypeOptions } from "expo-image-picker";
 import { useRouter } from "expo-router";
 import {
   Text,
@@ -7,6 +8,9 @@ import {
   Alert,
   ScrollView,
   View,
+  Pressable,
+  TouchableOpacity,
+  Platform,
 } from "react-native";
 import { theme } from "@/theme";
 import { PlantlyButton } from "@/components/PlantlyButton";
@@ -19,6 +23,7 @@ export default function NewScreen() {
   const [days, setDays] = useState<string>();
   const addPlant = usePlantStore((state) => state.addPlant);
   const router = useRouter();
+  const [imageUri, setImageUri] = useState<string | undefined>(undefined);
 
   const handleSubmit = () => {
     if (!name) {
@@ -46,15 +51,42 @@ export default function NewScreen() {
     router.navigate("/");
   };
 
+  const handleImagePicker = async () => {
+    try {
+      if (Platform.OS === "web") {
+        console.log(
+          `Image picker is not supported on web. Please use a mobile device to pick an image.`,
+        );
+        return;
+      }
+
+      const result = await launchImageLibraryAsync({
+        mediaTypes: ["images"],
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!result.canceled) {
+        setImageUri(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.error("Error picking image:", error);
+    }
+  };
+
   return (
     <KeyboardAwareScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       keyboardShouldPersistTaps="handled"
     >
-      <View style={styles.centered}>
-        <PlantlyImage />
-      </View>
+      <TouchableOpacity
+        style={styles.centered}
+        onPress={() => handleImagePicker()}
+      >
+        <PlantlyImage uri={imageUri} />
+      </TouchableOpacity>
       <Text style={styles.label}>Name</Text>
       <TextInput
         value={name}
@@ -100,5 +132,6 @@ const styles = StyleSheet.create({
   },
   centered: {
     alignItems: "center",
+    marginVertical: 24,
   },
 });

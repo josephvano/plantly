@@ -8,6 +8,7 @@
     "expo": "~57.0.29",
     "expo-constants": "~57.0.22",
     "expo-haptics": "~57.0.3",
+    "expo-image-picker": "~57.0.20",
     "expo-linear-gradient": "~57.0.2",
     "expo-linking": "~57.0.13",
     "expo-router": "~57.0.27",

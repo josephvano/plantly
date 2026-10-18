@@ -3,16 +3,18 @@ const PlantlyImageSource = require("@/assets/plantly.png");
 
 type Props = {
   size?: number;
+  uri?: string;
 };
 
 /**
- * PlantlyImage component that displays the Plantly logo.
+ * PlantlyImage component that displays the Plantly logo or a selected image.
  * The size of the image is dynamically calculated based on the screen width, with a maximum limit of 400 pixels.
  * @param param0
  * @param param0.size
+ * @param param0.uri
  * @constructor
  */
-export const PlantlyImage = ({ size }: Props) => {
+export const PlantlyImage = ({ size, uri }: Props) => {
   const { width } = useWindowDimensions();
 
   /**
@@ -23,8 +25,8 @@ export const PlantlyImage = ({ size }: Props) => {
 
   return (
     <Image
-      source={PlantlyImageSource}
-      style={{ width: imageSize, height: imageSize }}
+      source={uri ? { uri } : PlantlyImageSource}
+      style={{ width: imageSize, height: imageSize, borderRadius: 20 }}
     />
   );
 };
