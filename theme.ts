@@ -8,5 +8,6 @@ export const theme = {
     greenLight: "#a0d36c",
     greenLighter: "#d0e57e",
     lightGrey: "#eee",
+    grey: "#808080",
   },
 };

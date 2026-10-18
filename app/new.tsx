@@ -1,3 +1,5 @@
+import { usePlantStore } from "@/lib";
+import { useRouter } from "expo-router";
 import {
   Text,
   StyleSheet,
@@ -15,6 +17,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 export default function NewScreen() {
   const [name, setName] = useState<string>();
   const [days, setDays] = useState<string>();
+  const addPlant = usePlantStore((state) => state.addPlant);
+  const router = useRouter();
 
   const handleSubmit = () => {
     if (!name) {
@@ -36,6 +40,10 @@ export default function NewScreen() {
     }
 
     console.log("Adding plant", name, days);
+
+    addPlant(name, Number(days));
+
+    router.navigate("/");
   };
 
   return (

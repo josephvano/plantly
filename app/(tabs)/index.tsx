@@ -1,15 +1,19 @@
+import { PlantCard } from "@/components/PlantCard";
+import { usePlantStore } from "@/lib";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
+  const plants = usePlantStore((state) => state.plants);
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Plantly</Text>
-      <Text>
-        Open up App.tsx to start working on your app! Now using expo router!
-      </Text>
+    <FlatList
+      style={styles.container}
+      contentContainerStyle={styles.content}
+      data={plants}
+      renderItem={({ item }) => <PlantCard plant={item} />}
+    >
       <StatusBar style="auto" />
-    </View>
+    </FlatList>
   );
 }
 
@@ -19,11 +23,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   container: {
-    flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 24,
-    gap: 24,
+  },
+  content: {
+    flex: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
   },
 });
