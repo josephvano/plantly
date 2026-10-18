@@ -1,6 +1,6 @@
 import { useUserStore } from "@/lib";
 import { StyleSheet, View, Text } from "react-native";
-import { PlantlyButton } from "@/components/Button";
+import { PlantlyButton } from "@/components/PlantlyButton";
 
 export default function ProfileScreen() {
   const toggleOnboarding = useUserStore((state) => state.toggleOnboarding);

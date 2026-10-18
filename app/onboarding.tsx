@@ -1,4 +1,4 @@
-import { PlantlyButton } from "@/components/Button";
+import { PlantlyButton } from "@/components/PlantlyButton";
 import { PlantlyImage } from "@/components/PlantlyImage";
 import { useUserStore } from "@/lib";
 import { LinearGradient } from "expo-linear-gradient";

@@ -7,5 +7,6 @@ export const theme = {
     secondary: "#206a42",
     greenLight: "#a0d36c",
     greenLighter: "#d0e57e",
+    lightGrey: "#eee",
   },
 };
