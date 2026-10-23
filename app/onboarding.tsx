@@ -3,7 +3,7 @@ import { PlantlyImage } from "@/components/PlantlyImage";
 import { useUserStore } from "@/lib";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform } from "react-native";
 import { theme } from "@/theme";
 
 export default function OnboardingScreen() {
@@ -57,6 +57,10 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   tagline: {
-    fontSize: 16,
+    fontSize: 48,
+    fontFamily: Platform.select({
+      ios: "Caveat-Regular",
+      android: "Caveat_400Regular",
+    }),
   },
 });
